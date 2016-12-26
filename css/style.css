@@ -1,0 +1,13 @@
+h1 { 
+    text-align: center; 
+    size: 2em;
+}
+
+.content {
+    text-align: center;
+}
+
+.content-pane-1, .content-pane-1 {
+    width: 95%;
+    display: inline-block;
+}
