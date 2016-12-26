@@ -15,7 +15,7 @@
 
         <div class="header row">
             <div class="col-sm-12">
-                <h1>PAGE TITLE</h1>
+                <h1>Login</h1>
             </div>
         </div>
 
