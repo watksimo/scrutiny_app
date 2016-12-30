@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>TITLE</title>
+        <title>Scrutiny Strength & Conditioning - Application</title>
 
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <!-- Bootstrap -->
@@ -20,11 +20,26 @@
         </div>
 
         <div class="content row">
-            <div class="content-pane-1 col-sm-4">
+
+            <div class="content-pane-1 col-sm-8 col-sm-offset-2" id="login_cont">
+                <form>
+                    <div class="form-group col-sm-10 col-sm-offset-1" id="login_field_cont">
+                        <label for="emailAddress">Email address</label>
+                        <input type="email" class="form-control" id="emailAddress" placeholder="Enter email">
+
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Password">
+
+                    </div>
+
+                    <div class="form-group col-sm-8 col-sm-offset-2" id="login_button_cont">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                </form>
+                
+
             </div>
 
-            <div class="content-pane-2 col-sm-8">
-            </div>
         </div>
 
         <div class="footer row">
