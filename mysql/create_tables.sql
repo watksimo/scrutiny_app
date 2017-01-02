@@ -15,7 +15,7 @@ CREATE TABLE Clients (
     email VARCHAR(100),
     comments VARCHAR(1000),
     trainerid INT(6) UNSIGNED,
-    FOREIGN KEY FK_Client_Trainer (id)
+    FOREIGN KEY FK_Client_Trainer (trainerid)
     REFERENCES Trainers(id)
     ON UPDATE CASCADE
     ON DELETE RESTRICT,
