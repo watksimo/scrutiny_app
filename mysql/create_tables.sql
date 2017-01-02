@@ -22,6 +22,33 @@ CREATE TABLE Clients (
     CONSTRAINT PK_Clients PRIMARY KEY (id)
 );
 
+CREATE TABLE Questionnaires (
+    id INT(6) UNSIGNED AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    comments VARCHAR(1000),
+    CONSTRAINT PK_Questionnaires PRIMARY KEY (id)
+);
+
+CREATE TABLE Questions (
+    id INT(6) UNSIGNED AUTO_INCREMENT,
+    question VARCHAR(1000) NOT NULL,
+    CONSTRAINT PK_Questions PRIMARY KEY (id)
+);
+
+CREATE TABLE QuestionnairesQuestions (
+    questionnaireid INT(6) UNSIGNED NOT NULL,
+    questionid INT(6) UNSIGNED NOT NULL,
+    value INT(3) NOT NULL,
+    CONSTRAINT PK_QuestionnairesQuestions PRIMARY KEY (questionnaireid,questionid)
+);
+
+CREATE TABLE ClientsQuestionnaires (
+    clientid INT(6) UNSIGNED NOT NULL,
+    questionnaireid INT(6) UNSIGNED NOT NULL,
+    state ENUM('past','current','future'),
+    CONSTRAINT PK_ClientsQuestionnaires PRIMARY KEY (clientid,questionnaireid)
+);
+
 CREATE TABLE Injuries (
     id INT(6) UNSIGNED AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
@@ -29,7 +56,28 @@ CREATE TABLE Injuries (
     CONSTRAINT PK_Injuries PRIMARY KEY (id)
 );
 
-CREATE TABLE ClientInjuries (
+CREATE TABLE Tracking (
+    id INT(6) UNSIGNED AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    trackvar VARCHAR(100) NOT NULL,
+    comments VARCHAR(1000),
+    clientid INT(6) UNSIGNED,
+    FOREIGN KEY FK_Tracking_Client (clientid)
+    REFERENCES Clients(id)
+    ON UPDATE CASCADE
+    ON DELETE RESTRICT,
+    CONSTRAINT PK_Tracking PRIMARY KEY (id)
+);
+
+CREATE TABLE TrackingValues (
+    trackingid INT(6) UNSIGNED NOT NULL,
+    date DATE NOT NULL,
+    value FLOAT(7,4) NOT NULL,
+    comments VARCHAR(1000),
+    CONSTRAINT PK_TrackingValues PRIMARY KEY (trackingid,date,value)
+);
+
+CREATE TABLE ClientsInjuries (
     clientid INT(6) UNSIGNED,
     injuryid INT(6) UNSIGNED,
     comments VARCHAR(1000),
@@ -53,7 +101,7 @@ CREATE TABLE Milestones (
     CONSTRAINT PK_Milestones PRIMARY KEY (id)
 );
 
-CREATE TABLE ClientMilestones (
+CREATE TABLE ClientsMilestones (
     clientid INT(6) UNSIGNED,
     milestoneid INT(6) UNSIGNED,
     FOREIGN KEY FK_ClientMilestone_Client (clientid)
@@ -112,10 +160,11 @@ CREATE TABLE Sets (
     CONSTRAINT PK_Sets PRIMARY KEY (id)
 );
 
-CREATE TABLE ClientPrograms (
+CREATE TABLE ClientsPrograms (
     clientid INT(6) UNSIGNED,
     programid INT(6) UNSIGNED,
     state ENUM('past','current','future'),
+    loadlevel ENUM('amber','green'),
     FOREIGN KEY FK_ClientPrograms_Client (clientid)
     REFERENCES Clients(id)
     ON UPDATE CASCADE
@@ -127,7 +176,7 @@ CREATE TABLE ClientPrograms (
     CONSTRAINT PK_ClientPrograms PRIMARY KEY (clientid,programid)
 );
 
-CREATE TABLE ProgramExercises (
+CREATE TABLE ProgramsExercises (
     programid INT(6) UNSIGNED,
     exerciseid INT(6) UNSIGNED,
     position INT(2) UNSIGNED NOT NULL,
