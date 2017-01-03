@@ -3,16 +3,16 @@ CREATE TABLE Trainers (
     name VARCHAR(100) NOT NULL,
     phone VARCHAR(10),
     quals VARCHAR(300),
-    email VARCHAR(100),
+    email VARCHAR(100) NOT NULL UNIQUE,
     CONSTRAINT PK_Trainers PRIMARY KEY (id)
 );
 
 CREATE TABLE Clients (
     id INT(6) UNSIGNED AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
-    type ENUM('strength','athlete','gen_pop'),
+    type ENUM('strength','athlete','gen_pop') NOT NULL,
     phone VARCHAR(10),
-    email VARCHAR(100),
+    email VARCHAR(100) NOT NULL UNIQUE,
     comments VARCHAR(1000),
     trainerid INT(6) UNSIGNED,
     FOREIGN KEY FK_Client_Trainer (trainerid)
@@ -39,13 +39,29 @@ CREATE TABLE QuestionnairesQuestions (
     questionnaireid INT(6) UNSIGNED NOT NULL,
     questionid INT(6) UNSIGNED NOT NULL,
     value INT(3) NOT NULL,
+    FOREIGN KEY FK_QuestionnairesQuestions_Questionnaires (questionnaireid)
+    REFERENCES Questionnaires(id)
+    ON UPDATE CASCADE
+    ON DELETE RESTRICT,
+    FOREIGN KEY FK_QuestionnairesQuestions_Questions (questionid)
+    REFERENCES Questions(id)
+    ON UPDATE CASCADE
+    ON DELETE RESTRICT,
     CONSTRAINT PK_QuestionnairesQuestions PRIMARY KEY (questionnaireid,questionid)
 );
 
 CREATE TABLE ClientsQuestionnaires (
     clientid INT(6) UNSIGNED NOT NULL,
     questionnaireid INT(6) UNSIGNED NOT NULL,
-    state ENUM('past','current','future'),
+    state ENUM('past','current','future') NOT NULL,
+    FOREIGN KEY FK_ClientsQuestionnaires_Client (clientid)
+    REFERENCES Clients(id)
+    ON UPDATE CASCADE
+    ON DELETE RESTRICT,
+    FOREIGN KEY FK_ClientsQuestionnaires_Questionnaires (questionnaireid)
+    REFERENCES Questionnaires(id)
+    ON UPDATE CASCADE
+    ON DELETE RESTRICT,
     CONSTRAINT PK_ClientsQuestionnaires PRIMARY KEY (clientid,questionnaireid)
 );
 
@@ -74,6 +90,10 @@ CREATE TABLE TrackingValues (
     date DATE NOT NULL,
     value FLOAT(7,4) NOT NULL,
     comments VARCHAR(1000),
+    FOREIGN KEY FK_TrackingValues_Tracking (trackingid)
+    REFERENCES Tracking(id)
+    ON UPDATE CASCADE
+    ON DELETE RESTRICT,
     CONSTRAINT PK_TrackingValues PRIMARY KEY (trackingid,date,value)
 );
 
@@ -95,7 +115,7 @@ CREATE TABLE ClientsInjuries (
 CREATE TABLE Milestones (
     id INT(6) UNSIGNED AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
-    type ENUM('competition','personal'),
+    type ENUM('competition','personal') NOT NULL,
     comments VARCHAR(1000),
     date DATE,
     CONSTRAINT PK_Milestones PRIMARY KEY (id)
@@ -118,7 +138,7 @@ CREATE TABLE ClientsMilestones (
 CREATE TABLE Programs (
     id INT(6) UNSIGNED AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
-    type ENUM('strength','athlete','gen_pop'),
+    type ENUM('strength','athlete','gen_pop') NOT NULL,
     comments VARCHAR(1000),
     startdate DATE,
     enddate DATE,
