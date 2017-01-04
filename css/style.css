@@ -11,3 +11,7 @@ h1 {
     width: 95%;
     display: inline-block;
 }
+
+body {
+    padding-bottom: 70px;
+}
