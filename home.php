@@ -1,8 +1,11 @@
+<!doctype html>
 <?php
 	session_start();
-?>
 
-<!doctype html>
+	if(!isset($_SESSION['client_id'])) {
+		 header("Location: login.php");
+	}
+?>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -23,7 +26,7 @@
 
         <div class="header row">
             <div class="col-sm-12">
-                <h1>Home Page for Client #<?php echo $_SESSION['client_id']; ?></h1>
+                <h1 id='page_heading'></h1>
             </div>
         </div>
         
@@ -37,14 +40,16 @@
 				 <span class = "icon-bar"></span>
 				 <span class = "icon-bar"></span>
 			  </button>
-				
-			  <a class = "navbar-brand" href = "#">Scrutiny</a>
+
 		   </div>
 		   
 		   <div class = "collapse navbar-collapse" id = "example-navbar-collapse">
 			
 			  <ul class = "nav navbar-nav">
 				 <li class = "active">
+				 	<a href = "#">Home</a>
+				 </li>
+				 <li>
 				 	<a href = "#">Trainer Chat</a>
 				 </li>
 				 <li>
@@ -57,6 +62,10 @@
 					
 				 <li>
 					<a href = "#">Facebook Group</a>
+				 </li>
+
+				 <li id='btn_logout'>
+					<a href = "#">Logout</a>
 				 </li>
 					
 			  </ul>
@@ -84,5 +93,6 @@
         </div>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjBf13Qu1XH0l-KcykGEM8LshQFw1c4Bc"></script>
         <script type="text/javascript" src="js/functions.js"></script>
+        <script type="text/javascript" src="js/home.js"></script>
     </footer>
 </html>

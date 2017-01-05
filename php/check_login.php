@@ -11,7 +11,7 @@
         echo "$result->num_rows";
 
         # Set client_id as session variable to show login status
-		$row = $result->fetch_array();	# Guaranteed only 1 due to email as PK
+		$row = $result->fetch_array();	# Guaranteed only 1 due to email as unique
         $_SESSION['client_id'] = $row["id"];
         
         # Close db connections
