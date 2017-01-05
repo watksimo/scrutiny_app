@@ -7,7 +7,6 @@
 
     if ($result = $conn->query($check_query)) {
 
-        # Set client_id as session variable to show login status
 		$row = $result->fetch_assoc();	# Guaranteed only 1 due to client_id as PK
         echo json_encode($row);
         

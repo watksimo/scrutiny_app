@@ -26,7 +26,7 @@
 
         <div class="header row">
             <div class="col-sm-12">
-                <h1 id='page_heading'></h1>
+                <h1><span id='page_heading'></span><span class="label label-default pull-right" id='trainer_badge'></span></h1>
             </div>
         </div>
         
@@ -55,19 +55,18 @@
 				 <li>
 				 	<a href = "#">Daily Overview</a>
 				 </li>
-					
 				 <li>
 					<a href = "#">Progress Charts</a>
 				 </li>
-					
+				 <li>
+					<a href = "#">Milestones</a>
+				 </li>
 				 <li>
 					<a href = "#">Facebook Group</a>
 				 </li>
-
 				 <li id='btn_logout'>
 					<a href = "#">Logout</a>
 				 </li>
-					
 			  </ul>
 		   </div>
 		   
