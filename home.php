@@ -2,9 +2,16 @@
 <?php
 	session_start();
 
-	if(!isset($_SESSION['client_id'])) {
+	if( !( (isset($_SESSION['client_id'])) || (isset($_SESSION['trainer_id'])) ) ) {
 		 header("Location: login.php");
 	}
+
+	if( isset($_SESSION['trainer_id']) ) {
+		$is_trainer = 1;
+	} else {
+		$is_trainer = 0;
+	}
+
 ?>
 <html lang="en">
     <head>
@@ -20,6 +27,10 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <script type="text/javascript">
+        	var isTrainer = <?php echo $is_trainer; ?>;
+        	console.log(isTrainer);
+        </script>
     </head>
 
     <body>
