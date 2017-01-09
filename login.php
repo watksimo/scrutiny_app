@@ -13,6 +13,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Scrutiny Strength & Conditioning - Application</title>
 
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <!-- Bootstrap -->
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
