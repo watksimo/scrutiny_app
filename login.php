@@ -33,7 +33,7 @@
         <div class="content row">
 
             <div class="content-pane-1 col-sm-8 col-sm-offset-2" id="login_cont">
-                <form>
+                <form id='login_form'>
                     <div class="form-group col-sm-10 col-sm-offset-1" id="login_field_cont">
                         <label for="emailAddress">Email address</label>
                         <input type="text" class="form-control" id="emailAddress" placeholder="Enter email">

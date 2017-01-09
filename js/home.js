@@ -23,6 +23,29 @@ $(function() {
 	        $('#page_heading').text(json_trainer_name['trainername'] + "'s Trainer Page");
 	        $('#trainer_badge').text("Trainer");
 	    });
+
+	    // Get all of the trainers clients
+	    $.ajax({
+            type: "POST",
+            url: "php/get_trainers_clients.php",
+        })
+	    .done(function (client_list) {
+	        json_client_list = JSON.parse(client_list);
+	        // console.log(json_client_list);
+
+	        var select_box = $('<select />');
+
+
+			var i;
+			for (i = 0; i < json_client_list.length; ++i) {
+				$('<option />', {value: json_client_list[i]['id'], text: json_client_list[i]['name']}).appendTo(select_box);
+			}
+
+			select_box.appendTo('#main_display');
+
+
+	    });
+
 	} else {
 		$.ajax({
             type: "POST",
@@ -69,7 +92,7 @@ $(function() {
 
 			console.log(m);
 		  
-			$('#calendar').fullCalendar({
+			$('#main_display').fullCalendar({
 				header: {
 					left: 'prev,next today',
 					center: 'title',

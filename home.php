@@ -30,7 +30,7 @@
         
         <script type="text/javascript">
         	var isTrainer = <?php echo $is_trainer; ?>;
-        	console.log(isTrainer);
+        	// console.log(isTrainer);
         </script>
     </head>
 
@@ -42,66 +42,37 @@
             </div>
         </div>
         
-       <nav class = "navbar navbar-default" role = "navigation">
-   
-		   <div class = "navbar-header">
-			  <button type = "button" class = "navbar-toggle" 
-				 data-toggle = "collapse" data-target = "#example-navbar-collapse">
-				 <span class = "sr-only">Toggle navigation</span>
-				 <span class = "icon-bar"></span>
-				 <span class = "icon-bar"></span>
-				 <span class = "icon-bar"></span>
-			  </button>
-
-		   </div>
-		   
-		   <div class = "collapse navbar-collapse" id = "example-navbar-collapse">
-			
-			  <ul class = "nav navbar-nav">
-				 <li class = "active">
-				 	<a href = "#">Home</a>
-				 </li>
-				 <li>
-				 	<a href = "#">Trainer Chat</a>
-				 </li>
-				 <li>
-				 	<a href = "#">Daily Overview</a>
-				 </li>
-				 <li>
-					<a href = "#">Progress Charts</a>
-				 </li>
-				 <li>
-					<a href = "#">Milestones</a>
-				 </li>
-				 <li>
-					<a href = "#">Facebook Group</a>
-				 </li>
-				 <li id='btn_logout'>
-					<a href = "#">Logout</a>
-				 </li>
-			  </ul>
-		   </div>
-		   
+		<nav class = "navbar navbar-default" role = "navigation">
+			<?php include 'php/navbar.php'; ?>
 		</nav> 
 
         <div class="content row">
             <div class="container">
-			    <hr>
-				<div id="calendar"></div>
+            	<?php
+	            	if( isset($_SESSION['trainer_id']) ) {
+	            		echo '
+							<div class="col-sm-6 col-sm-offset-3 panel panel-default">
+								<div class="panel-heading">
+									<h3 class="panel-title">Select Client</h3>
+								</div>
+							  
+								<div class="panel-body" id="main_display"></div>
+							</div>
+						';
+	            	} else {
+	            		echo '
+	            			<div class="col-sm-10 col-sm-offset-1" id="main_display"></div>
+	            		';
+	            	}
+            	?>
+            	
 			</div>
         </div>
 
     </body>
     
     <footer>
-    	<div class="footer">
-            <div class="col-sm-12">
-            	<div class="pull-right">
-	                <p>Scrutiny Strength & Conditioning</p>
-	                <p>Site designed and maintained by Mick Watkins</p>
-				</div>
-            </div>
-        </div>
+    	<?php include 'php/footer.php'; ?>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjBf13Qu1XH0l-KcykGEM8LshQFw1c4Bc"></script>
         <script type="text/javascript" src="js/functions.js"></script>
         <script type="text/javascript" src="js/home.js"></script>
