@@ -40,14 +40,20 @@
 
         <div class="content row">
             <div class="container">
+                
     			<div class="col-sm-6 col-sm-offset-3 panel panel-default">
     				<div class="panel-heading">
     					<h3 class="panel-title">Edit Clients</h3>
 
-                        <div class="panel-body" id="main_display"></div>
     				</div>
     			  
-    				<div class="panel-body" id="main_display"></div>
+    				<div class="panel-body">
+                        <div id="client_list_display"></div>
+                        <br>
+                        <span id="add_client_display"></span><button type="button" id="btn_add_client">Add Client</button>
+
+                    </div>
+                    
     			</div>
             	
 			</div>

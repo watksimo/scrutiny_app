@@ -15,6 +15,17 @@ $('#btn_logout').on('click', function() {
 
 $(function() {
 
+	$.ajax({
+            type: "POST",
+            url: "php/get_trainer_name.php",
+        })
+	    .done(function (trainer_name) {
+	        json_trainer_name = JSON.parse(trainer_name);
+	        // console.log(json_client_trainer);
+	        $('#page_heading').text(json_trainer_name['trainername'] + "'s Trainer Page");
+	        $('#trainer_badge').text("Trainer");
+	    });
+
 	// Get all of the trainers clients
     $.ajax({
         type: "POST",
@@ -38,7 +49,7 @@ $(function() {
 
 		}
 
-		client_list.appendTo('#main_display');
+		client_list.appendTo('#client_list_display');
 
 		$('.remove_client').on('click', function(event) {
 		    // console.log('Removing client');
@@ -59,4 +70,46 @@ $(function() {
 
 	});
 
+
+	// Get all untrained clients
+	// Get all of the trainers clients
+    $.ajax({
+        type: "POST",
+        url: "php/get_untrained_clients.php",
+    })
+    .done(function (client_list) {
+        json_client_list = JSON.parse(client_list);
+        // console.log(json_client_list);
+
+        var select_box = $('<select id="client_select" />');
+        $('<option />', {value: '', text: ''}).appendTo(select_box);
+
+		var i;
+		for (i = 0; i < json_client_list.length; ++i) {
+			$('<option />', {value: json_client_list[i]['id'], text: json_client_list[i]['name']}).appendTo(select_box);
+		}
+
+		select_box.appendTo('#add_client_display');
+
+	});
+
+	$("#btn_add_client").click(function () {
+        addClient();
+    });
+
 });
+
+function addClient() {
+    console.log('Adding client!');
+    $.ajax({
+        type: "POST",
+        url: "php/add_client_to_trainer.php",
+        data: {
+            clientid: $("#client_select").val()
+        }
+    })
+    .done(function () {
+        console.log("Client added!");
+        window.location.replace("edit_client.php");
+    });
+}
