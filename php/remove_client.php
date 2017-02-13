@@ -7,7 +7,6 @@
 
     if ($result = $conn->query($check_query)) {        
         # Close db connections
-        $result->free();
         $conn->close();
     }
 ?>

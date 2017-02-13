@@ -50,7 +50,7 @@
     				<div class="panel-body">
                         <div id="client_list_display"></div>
                         <br>
-                        <span id="add_client_display"></span><button type="button" id="btn_add_client">Add Client</button>
+                        <span id="add_client_display"></span><button type="button" class="btn btn-default" id="btn_add_client">Add Client</button>
 
                     </div>
                     

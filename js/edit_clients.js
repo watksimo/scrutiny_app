@@ -82,7 +82,7 @@ $(function() {
         // console.log(json_client_list);
 
         var select_box = $('<select id="client_select" />');
-        $('<option />', {value: '', text: ''}).appendTo(select_box);
+        // $('<option />', {value: '', text: ''}).appendTo(select_box);
 
 		var i;
 		for (i = 0; i < json_client_list.length; ++i) {
@@ -110,6 +110,6 @@ function addClient() {
     })
     .done(function () {
         console.log("Client added!");
-        window.location.replace("edit_client.php");
+        window.location.replace("edit_clients.php");
     });
 }
