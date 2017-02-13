@@ -11,7 +11,6 @@
         echo json_encode($row);
         
         # Close db connections
-        $result->free();
         $conn->close();
     }
 ?>

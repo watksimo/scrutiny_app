@@ -13,7 +13,7 @@
 
 	<ul class = "nav navbar-nav">
 		<li class = "active">
-			<a href = "#">Home</a>
+			<a href = "home.php">Home</a>
 		</li>
 		<li>
 			<a href = "#">Trainer Chat</a>
@@ -25,7 +25,7 @@
 			<a href = "#">Progress Charts</a>
 		</li>
 		<li>
-			<a href = "#">Milestones</a>
+			<a href = "milestones.php">Milestones</a>
 		</li>
 		<li>
 			<a href = "#">Facebook Group</a>

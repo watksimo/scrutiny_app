@@ -1,45 +1,20 @@
-
-$('#btn_logout').on('click', function() {
-    console.log('called');
-    $.ajax({
-        type: "POST",
-        url: "php/logout.php"
-    })
-    .done(function (rows_returned) {
-        window.location.replace("login.php");
-    });
-});
-
-function setHeading() {
-	$.ajax({
-        type: "POST",
-        url: "php/get_heading_text.php",
-    })
-    .done(function (heading_text) {
-        $('#page_heading').text(heading_text);
-    });
-}
-
-function setBadge() {
-	$.ajax({
-        type: "POST",
-        url: "php/get_badge_text.php",
-    })
-    .done(function (badge_text) {
-		$('#trainer_badge').text(badge_text);
-    });
-	
-}
-
-json_milestones = [];
 function loadMilestoneCalendar() {
+	$.ajax({
+        type: "POST",
+        url: "php/get_client_trainer.php",
+    })
+    .done(function (client_trainer) {
+        json_client_trainer = JSON.parse(client_trainer);
+        // console.log(json_client_trainer);
+        $('#page_heading').text(json_client_trainer['client'] + "'s Training");
+        $('#trainer_badge').text("Trainer: " + json_client_trainer['trainer']);
+    });
 
     $.ajax({
         type: "POST",
         url: "php/get_milestones.php",
     })
     .done(function (milestones) {
-    	console.log(milestones);
         json_milestones = JSON.parse(milestones);
         // console.log(json_milestones);
     });

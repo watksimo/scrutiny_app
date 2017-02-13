@@ -50,28 +50,42 @@
 
         <div class="content row">
             <div class="container">
-            	<?php
-	            	if( isset($_SESSION['trainer_id']) ) {
-	            		echo '
-							<div class="col-sm-6 col-sm-offset-3 panel panel-default">
-								<div class="panel-heading">
-									<h3 class="panel-title">Select Client</h3>
-								</div>
-							  
-								<div class="panel-body" id="main_display"></div>
+	            <div class="col-sm-10 col-sm-offset-1" id="main_display"></div>
 
-								<div class="panel-footer">
-									<button type="button" class="btn btn-default" onclick="window.location=\'edit_clients.php\';">Edit Clients</button>
-								</div>
-							</div>
-						';
-	            	} else {
-	            		echo '
-	            			<div class="col-sm-10 col-sm-offset-1" id="main_display"></div>
-	            		';
-	            	}
-            	?>
-            	
+	            <br>
+
+				<div class="col-sm-6 col-sm-offset-3 panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Add Milestone</h3>
+					</div>
+				  
+					<div class="panel-body" id="add_milestone_details">
+						<div class="form-group">
+							<label for="mile_name">Name</label>
+	  						<input type="text" class="form-control" id="mile_name">
+	  					</div>
+	  					<div class="form-group">
+							<label for="mile_type">Type</label>
+	  						<select class="form-control" id="mile_type">
+							    <option>competition</option>
+							    <option>personal</option>
+							  </select>
+	  					</div>
+	  					<div class="form-group">
+							<label for="mile_comments">Comments</label>
+							<textarea class="form-control" rows="2" id="mile_comments"></textarea>
+	  					</div>
+	  					<div class="form-group">
+							<label for="mile_date">Date</label>
+	  						<input type="date" class="form-control" id="mile_date">
+	  					</div>
+					</div>
+
+					<div class="panel-footer">
+						<button type="button" class="btn btn-default" id="btn_add_mile">Add Milestone</button>
+					</div>
+				</div>
+
 			</div>
         </div>
 
@@ -81,6 +95,6 @@
     	<?php include 'php/footer.php'; ?>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjBf13Qu1XH0l-KcykGEM8LshQFw1c4Bc"></script>
         <script type="text/javascript" src="js/functions.js"></script>
-        <script type="text/javascript" src="js/home.js"></script>
+        <script type="text/javascript" src="js/milestones.js"></script>
     </footer>
 </html>
