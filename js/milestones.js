@@ -1,8 +1,8 @@
-$('#btn_add_mile').on('click', function() {
-    console.log('Adding milestone');
+$('#btn_create_mile').on('click', function() {
+    console.log('Creating milestone');
     $.ajax({
         type: "POST",
-        url: "php/add_milestone.php",
+        url: "php/create_milestone.php",
         data: {
             mile_name: $("#mile_name").val(),
             mile_type: $("#mile_type").val(),
@@ -12,7 +12,7 @@ $('#btn_add_mile').on('click', function() {
     })
     .done(function (sql) {
     	console.log(sql);
-        // window.location.replace("milestones.php");
+        window.location.replace("milestones.php");
     });
 });
 

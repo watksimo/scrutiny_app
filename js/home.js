@@ -40,8 +40,9 @@ $(function() {
 					}
 				})
 				.done(function () {
-					$('#trainer_badge').text("Viewing: " + sel_client_name);
-					viewing = sel_client_name;
+					// $('#trainer_badge').text("Viewing: " + sel_client_name);
+					// viewing = sel_client_name;
+					window.location.replace("home.php");
 				});
 			});
 

@@ -2,14 +2,10 @@
 
     session_start();
 
-    $returnval = 0;
+    $add_mile_id = $_POST['add_mile_id'];
+    $sel_client = $_SESSION['sel_client'];
 
-    $mile_name = $_POST['mile_name'];
-    $mile_type = $_POST['mile_type'];
-    $mile_comments = $_POST['mile_comments'];
-    $mile_date = $_POST['mile_date'];
-
-    $check_query = "INSERT INTO Milestones (id,name,type,comments,date) VALUES(0,'$mile_name','$mile_type','$mile_comments',STR_TO_DATE('$mile_date', '%Y-%m-%d'))";
+    $check_query = "INSERT INTO ClientsMilestones (clientid,milestoneid) VALUES($sel_client,$add_mile_id)";
     $conn=mysqli_connect('127.0.0.1','root','GoCanvas','scrutiny');
 
     echo $check_query;

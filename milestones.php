@@ -53,10 +53,70 @@
 	            <div class="col-sm-10 col-sm-offset-1" id="main_display"></div>
 
 	            <br>
+				<?php
+					if(isset($_SESSION['sel_client'])) {
+						echo '
+							<div class="col-sm-6 col-sm-offset-3 panel panel-default">
+								<div class="panel-heading">
+									<h3 class="panel-title">
+						';
+						echo 'Add Milestone for ' . $_SESSION['sel_client_name'];
+						echo '
+									</h3>
+								</div>
+
+								<div class="panel-body" id="milestone_list">
+								</div>
+								<div class="panel-footer">
+									<button type="button" class="btn btn-default" id="btn_add_mile">Add Milestone</button>
+								</div>
+							</div>
+						';
+						echo '
+							
+								<script type="text/javascript">
+									$.ajax({
+							            type: "POST",
+							            url: "php/get_milestone_list.php",
+							        })
+								    .done(function (client_list) {
+								        json_client_list = JSON.parse(client_list);
+								        // console.log(json_client_list);
+
+								        var select_box = $("<select id=\"add_mile_select\" />");
+
+										var i;
+										for (i = 0; i < json_client_list.length; ++i) {
+											$("<option />", {value: json_client_list[i]["id"], text: json_client_list[i]["name"]}).appendTo(select_box);
+										}
+
+										select_box.appendTo("#milestone_list");
+									});
+
+									$("#btn_add_mile").on("click", function() {
+									    console.log("Adding milestone to client");
+									    $.ajax({
+									        type: "POST",
+									        url: "php/add_milestone.php",
+									        data: {
+									            add_mile_id: $("#add_mile_select").val()
+									        }
+									    })
+									    .done(function (sql) {
+									    	console.log(sql);
+									        window.location.replace("milestones.php");
+									    });
+									});
+								</script>
+
+						';
+					}
+				?>
+					            
 
 				<div class="col-sm-6 col-sm-offset-3 panel panel-default">
 					<div class="panel-heading">
-						<h3 class="panel-title">Add Milestone</h3>
+						<h3 class="panel-title">Create New Milestone</h3>
 					</div>
 				  
 					<div class="panel-body" id="add_milestone_details">
@@ -82,7 +142,7 @@
 					</div>
 
 					<div class="panel-footer">
-						<button type="button" class="btn btn-default" id="btn_add_mile">Add Milestone</button>
+						<button type="button" class="btn btn-default" id="btn_create_mile">Create Milestone</button>
 					</div>
 				</div>
 
