@@ -79,15 +79,15 @@
 							            type: "POST",
 							            url: "php/get_milestone_list.php",
 							        })
-								    .done(function (client_list) {
-								        json_client_list = JSON.parse(client_list);
-								        // console.log(json_client_list);
+								    .done(function (mile_list) {
+								        json_mile_list = JSON.parse(mile_list);
+								        // console.log(json_mile_list);
 
 								        var select_box = $("<select id=\"add_mile_select\" />");
 
 										var i;
-										for (i = 0; i < json_client_list.length; ++i) {
-											$("<option />", {value: json_client_list[i]["id"], text: json_client_list[i]["name"]}).appendTo(select_box);
+										for (i = 0; i < json_mile_list.length; ++i) {
+											$("<option />", {value: json_mile_list[i]["id"], text: json_mile_list[i]["name"]}).appendTo(select_box);
 										}
 
 										select_box.appendTo("#milestone_list");
@@ -108,7 +108,62 @@
 									    });
 									});
 								</script>
+						';
 
+						// Create remove milestone panel
+						echo '
+							<div class="col-sm-6 col-sm-offset-3 panel panel-default">
+								<div class="panel-heading">
+									<h3 class="panel-title">
+						';
+						echo 'Remove Milestone from ' . $_SESSION['sel_client_name'];
+						echo '
+									</h3>
+								</div>
+
+								<div class="panel-body" id="rem_milestone_list">
+								</div>
+								<div class="panel-footer">
+									<button type="button" class="btn btn-default" id="btn_rem_mile">Remove Milestone</button>
+								</div>
+							</div>
+						';
+						echo '
+							
+								<script type="text/javascript">
+									$.ajax({
+							            type: "POST",
+							            url: "php/get_curr_milestone_list.php",
+							        })
+								    .done(function (mile_list) {
+								        json_mile_list = JSON.parse(mile_list);
+								        // console.log(json_mile_list);
+
+								        var select_box = $("<select id=\"rem_mile_select\" />");
+
+										var i;
+										for (i = 0; i < json_mile_list.length; ++i) {
+											$("<option />", {value: json_mile_list[i]["id"], text: json_mile_list[i]["name"]}).appendTo(select_box);
+										}
+
+										select_box.appendTo("#rem_milestone_list");
+									});
+
+									$("#btn_rem_mile").on("click", function() {
+									    console.log("Removing milestone from client");
+									    $.ajax({
+									        type: "POST",
+									        url: "php/rem_milestone.php",
+									        data: {
+									            rem_mile_id: $("#rem_mile_select").val()
+									        }
+									    })
+									    .done(function (sql) {
+									    	console.log(sql);
+									        window.location.replace("milestones.php");
+									    });
+									});
+								</script>
 						';
 					}
 				?>
@@ -145,6 +200,19 @@
 						<button type="button" class="btn btn-default" id="btn_create_mile">Create Milestone</button>
 					</div>
 				</div>
+
+
+					<div class="col-sm-6 col-sm-offset-3 panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">Delete Milestone</h3>
+						</div>
+
+						<div class="panel-body" id="del_milestone_list">
+						</div>
+						<div class="panel-footer">
+							<button type="button" class="btn btn-default" id="btn_del_mile">Delete Milestone</button>
+						</div>
+					</div>
 
 			</div>
         </div>
