@@ -25,6 +25,9 @@
 			<a href = "#">Progress Charts</a>
 		</li>
 		<li>
+			<a href = "programs.php">Programs</a>
+		</li>
+		<li>
 			<a href = "milestones.php">Milestones</a>
 		</li>
 		<li>
