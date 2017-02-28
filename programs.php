@@ -23,7 +23,6 @@
 		<link rel="icon" href="favicon.ico" type="image/x-icon">
 
         <link rel="stylesheet" type="text/css" href="css/style.css">
-        <link rel="stylesheet" type="text/css" href="css/calendar.css">
         <!-- Bootstrap -->
 		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -178,6 +177,17 @@
 									    	console.log(sql);
 									        window.location.replace("programs.php");
 									    });
+									});
+								</script>
+						';
+						echo '
+							<button type="button" class="btn btn-default" id="btn_create_prog">Create New Program</button>
+						';
+						echo '
+							
+								<script type="text/javascript">
+									$("#btn_create_prog").on("click", function() {
+										window.location.replace("create_program.php");
 									});
 								</script>
 						';
