@@ -109,6 +109,7 @@ function addExerToList() {
 
 	var itemText = `
 		<li id="exer_list_cont" class=" exer_li list-group-item col-sm-12">
+			<h4>` + exer_name + `</h4>
 			<table class="table">
 				<thead>
 					<tr>
@@ -116,6 +117,7 @@ function addExerToList() {
 						<th>Reps</th>
 						<th>Tempo</th>
 						<th>RPE</th>
+						<th>Comments</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -124,11 +126,12 @@ function addExerToList() {
 						<td>` + exer_reps + `</td>
 						<td>` + exer_tempo + `</td>
 						<td>` + exer_rpe + `</td>
+						<td>` + exer_comments + `</td>
 					</tr>
 				</tbody>
 			</table>
 	`;
-
+	console.log(exer_name);
 	itemText += `
 			<div class="exer hidden">
                 ` + exer_name + `
