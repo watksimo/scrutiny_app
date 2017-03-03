@@ -49,13 +49,13 @@
 //     });
 // });
 
-// $(function() {
-// 	setHeading();
-// 	setBadge();
+$(function() {
+	setHeading();
+	setBadge();
 
-// 	if(isTrainer == 1) {
-// 	    // setTrainerBadge();
-// 	}
+	if(isTrainer == 1) {
+	    // setTrainerBadge();
+	}
 
-// });
+});
 

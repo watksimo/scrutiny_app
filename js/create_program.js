@@ -1,4 +1,8 @@
 $( function() {
+
+	setHeading();
+	setBadge();
+
 	$( "#prog_list" ).sortable();
 	$( "#prog_list" ).disableSelection();
 
@@ -68,7 +72,8 @@ $( function() {
 		    }
 		})
 		.done(function (ret_val) {
-		    console.log(ret_val);
+		    // console.log(ret_val);
+		    window.location.replace("programs.php");
 		});
     });
 });
@@ -103,41 +108,59 @@ function addExerToList() {
 	var exer_id = $( "#exer_id" ).val();
 
 	var itemText = `
-		<li class="exer list-group-item">
+		<li id="exer_list_cont" class=" exer_li list-group-item col-sm-12">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Sets</th>
+						<th>Reps</th>
+						<th>Tempo</th>
+						<th>RPE</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>` + exer_sets + `</td>
+						<td>` + exer_reps + `</td>
+						<td>` + exer_tempo + `</td>
+						<td>` + exer_rpe + `</td>
+					</tr>
+				</tbody>
+			</table>
+	`;
+
+	itemText += `
+			<div class="exer hidden">
                 ` + exer_name + `
                 <div class="form-group">
-					<label for="list_exer_sets">Sets</label>
 					<input type="text" class="form-control" id="list_exer_sets" name="list_exer_sets" value="` + exer_sets + `">
 				</div>
 				<div class="form-group">
-					<label for="list_exer_reps">Reps</label>
 					<input type="text" class="form-control" id="list_exer_reps" name="list_exer_reps" value="` + exer_reps + `">
 				</div>
 				<div class="form-group">
-					<label for="list_exer_tempo">Tempo</label>
 					<input type="text" class="form-control" id="list_exer_tempo" name="list_exer_tempo" value="` + exer_tempo + `">
 				</div>
 				<div class="form-group">
-					<label for="list_exer_rpe">RPE</label>
 					<input type="text" class="form-control" id="list_exer_rpe" name="list_exer_rpe" value="` + exer_rpe + `">
 				</div>
 				<div class="form-group">
-					<label for="list_exer_comments">Comments</label>
 					<textarea class="form-control" rows="2" id="list_exer_comments">` + exer_comments + `</textarea>
 				</div>
 				<div class="form-group">
 					<input type="hidden" name="list_exer_id" id="list_exer_id" value=` + exer_id + `>
 				</div>
-                <button type="button" class="deleteExer btn btn-default btn-sm pull-right">
-		            <span class="glyphicon glyphicon-remove"></span>
-		        </button>
+        	</div>
+	        <button type="button" class="deleteExer btn btn-default btn-sm pull-right">
+	            <span class="glyphicon glyphicon-remove"></span>
+	        </button>
         </li>
 	`;
 
 	listItem.innerHTML = listItem.innerHTML + itemText;
 
 	$('.deleteExer').click(function() {
-        $(this).closest( ".exer" ).remove();
+        $(this).closest( ".exer_li" ).remove();
     });	
 }
 
