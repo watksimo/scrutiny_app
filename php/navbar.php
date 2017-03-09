@@ -33,6 +33,15 @@
 		<li>
 			<a href = "#">Facebook Group</a>
 		</li>
+<?php
+if( isset($_SESSION['trainer_id']) ) {
+	echo '
+		<li>
+			<a href = "admin.php">Admin</a>
+		</li>
+		';
+}
+?>
 		<li id='btn_logout'>
 			<a href = "#">Logout</a>
 		</li>
