@@ -10,6 +10,46 @@ $('#btn_logout').on('click', function() {
     });
 });
 
+function load_trainer_clients() {
+	// Get all of the trainers clients
+    $.ajax({
+        type: "POST",
+        url: "php/get_trainers_clients.php",
+    })
+    .done(function (client_list) {
+        json_client_list = JSON.parse(client_list);
+
+        var select_box = $('<select id="client_select" />');
+        $('<option />', {value: '', text: ''}).appendTo(select_box);
+
+		var i;
+		for (i = 0; i < json_client_list.length; ++i) {
+			$('<option />', {value: json_client_list[i]['id'], text: json_client_list[i]['name']}).appendTo(select_box);
+		}
+
+		select_box.appendTo('#client_list_div');
+
+		$( "#select_client_btn" ).click(function() {
+			var sel_client;
+			$( "select option:selected" ).each(function() {
+				sel_client = parseInt($("#client_select").val());
+				sel_client_name = $("#client_select").text();
+			});
+			$.ajax({
+				type: "POST",
+				url: "php/set_trainers_client.php",
+				data: {
+					sel_client: sel_client
+				}
+			})
+			.done(function () {
+				window.location.replace("home.php");
+			});
+		});
+
+    });
+}
+
 function setHeading() {
 	$.ajax({
         type: "POST",

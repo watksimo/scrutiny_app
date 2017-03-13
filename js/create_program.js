@@ -3,6 +3,8 @@ $( function() {
 	setHeading();
 	setBadge();
 
+	$("#progs_nav_li").addClass("active");
+
 	$( "#prog_list" ).sortable();
 	$( "#prog_list" ).disableSelection();
 

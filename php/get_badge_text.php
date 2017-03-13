@@ -11,14 +11,14 @@
             if ($result = $conn->query($check_query)) {
 
                 $row = $result->fetch_assoc();  # Guaranteed only 1 due to client_id as PK
-                echo "Viewing: " . $row['name'];
+                echo "Client: " . $row['name'];
                 $_SESSION['sel_client_name'] = $row['name'];
                 # Close db connections
                 $conn->close();
             }
             
         } else {
-            echo 'Trainer';
+            echo 'Select Client';
         }
         
     } else {

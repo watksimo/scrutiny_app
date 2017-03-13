@@ -12,25 +12,25 @@
 <div class = "collapse navbar-collapse" id = "example-navbar-collapse">
 
 	<ul class = "nav navbar-nav">
-		<li class = "active">
+		<li id="home_nav_li">
 			<a href = "home.php">Home</a>
 		</li>
-		<li>
+		<li id="chat_nav_li" class="disabled">
 			<a href = "#">Trainer Chat</a>
 		</li>
-		<li>
+		<li id="over_nav_li" class="disabled">
 			<a href = "#">Daily Overview</a>
 		</li>
-		<li>
+		<li id="chart_nav_li" class="disabled">
 			<a href = "#">Progress Charts</a>
 		</li>
-		<li>
+		<li id="progs_nav_li">
 			<a href = "programs.php">Programs</a>
 		</li>
-		<li>
+		<li id="mile_nav_li">
 			<a href = "milestones.php">Milestones</a>
 		</li>
-		<li>
+		<li id="fb_nav_li" class="disabled">
 			<a href = "#">Facebook Group</a>
 		</li>
 <?php

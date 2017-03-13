@@ -15,16 +15,10 @@ $('#btn_logout').on('click', function() {
 
 $(function() {
 
-	$.ajax({
-            type: "POST",
-            url: "php/get_trainer_name.php",
-        })
-	    .done(function (trainer_name) {
-	        json_trainer_name = JSON.parse(trainer_name);
-	        // console.log(json_client_trainer);
-	        $('#page_heading').text(json_trainer_name['trainername'] + "'s Trainer Page");
-	        $('#trainer_badge').text("Trainer");
-	    });
+	setHeading();
+	setBadge();
+
+	load_trainer_clients();
 
 	// Get all of the trainers clients
     $.ajax({
@@ -42,7 +36,7 @@ $(function() {
 			var li_html = '<li class="list-group-item">';
 			li_html = li_html + '<span class="rem_id" style="display:none;">' + json_client_list[i]['id'] + '</span>';
 			li_html = li_html + '<span>' + json_client_list[i]['name'] + '</span>';
-			li_html = li_html + '<button type="button" class="btn btn-default pull-right remove_client"><span class="glyphicon glyphicon-remove"></span></button>';
+			li_html = li_html + '<span><button type="button" class="btn btn-default pull-right remove_client"><span class="glyphicon glyphicon-remove"></span></button></span>';
 			li_html = li_html + '</li>';
 
 			client_list.append(li_html);

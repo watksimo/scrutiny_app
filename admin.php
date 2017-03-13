@@ -37,155 +37,175 @@
 
 	<body>
 
-		<div class="header row">
-			<div class="col-sm-12">
-				<h1><span id='page_heading'></span><span class="label label-default pull-right" id='trainer_badge'></span></h1>
+		<div class="container-fluid">
+
+			<div class="header row">
+				<div class="col-sm-12">
+					<h1><span id='page_heading'></span><span class="label label-default pull-right" id='trainer_badge'></span></h1>
+				</div>
 			</div>
-		</div>
-		
-		<nav class = "navbar navbar-default" role = "navigation">
-			<?php include 'php/navbar.php'; ?>
-		</nav> 
+			
+			<nav class = "navbar navbar-default" role = "navigation">
+				<?php include 'php/navbar.php'; ?>
+			</nav> 
 
-		<div class="content row">
-			<div class="container">
-				<ul class="nav nav-tabs col-sm-8 col-sm-offset-2" role="tablist">
-					<li class="active"><a href="#client_details_pane" role="tab" data-toggle="tab">Client</a></li>
-					<li><a href="#trainer_details_pane" role="tab" data-toggle="tab">Trainer</a></li>
-				</ul>
-				<div class="tab-content col-sm-8 col-sm-offset-2">
-					<div class="tab-pane active" id="client_details_pane">
-						
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h3 class="panel-title">
-									Create New Client
-								</h3>
-							</div>
-
-							<div class="panel-body" id="client_add_panel">
-								<div class="form-group">
-									<label for="new_client_name">Name</label>
-									<input type="text" class="form-control" id="new_client_name">
-								</div>
-								<div class="form-group">
-									<label for="new_client_type">Type</label>
-									<select class="form-control" id="new_client_type">
-										<option>strength</option>
-										<option>athlete</option>
-										<option>gen_pop</option>
-									</select>
-								</div>
-								<div class="form-group">
-									<label for="new_client_phone">Phone Number</label>
-									<input type="text" class="form-control" id="new_client_phone">
-								</div>
-								<div class="form-group">
-									<label for="new_client_email">Email Address</label>
-									<input type="text" class="form-control" id="new_client_email">
-								</div>
-								<div class="form-group">
-									<label for="new_client_comments">Comments</label>
-									<textarea class="form-control" rows="2" id="new_client_comments"></textarea>
-								</div>
-								
-							</div>
-							<div class="panel-footer">
-								<button type="button" class="btn btn-default" id="btn_create_client">Create Client</button>
-							</div>
-						</div>
-
-					</div>
-					<div class="tab-pane" id="trainer_details_pane">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h3 class="panel-title">
-									Create New Trainer
-								</h3>
-							</div>
-
-							<div class="panel-body" id="trainer_add_panel">
-								<div class="form-group">
-									<label for="new_trainer_name">Name</label>
-									<input type="text" class="form-control" id="new_trainer_name">
-								</div>
-								<div class="form-group">
-									<label for="new_trainer_phone">Phone Number</label>
-									<input type="text" class="form-control" id="new_trainer_phone">
-								</div>
-								<div class="form-group">
-									<label for="new_trainer_email">Email Address</label>
-									<input type="text" class="form-control" id="new_trainer_email">
-								</div>
-								<div class="form-group">
-									<label for="new_trainer_quals">Qualifications</label>
-									<textarea class="form-control" rows="2" id="new_trainer_quals"></textarea>
-								</div>
-								
-							</div>
-							<div class="panel-footer">
-								<button type="button" class="btn btn-default" id="btn_create_trainer">Create Trainer</button>
-							</div>
-						</div>
-					</div>
-				</div>
+			<div class="content row">
+				<div class="col-sm-10 col-sm-offset-1">
+					<ul class="nav nav-tabs" role="tablist">
+						<li class="active"><a href="#client_details_pane" role="tab" data-toggle="tab">Client</a></li>
+						<li><a href="#trainer_details_pane" role="tab" data-toggle="tab">Trainer</a></li>
+					</ul>
 				
-				<script type="text/javascript">
 
-					$("#btn_create_client").on("click", function() {
-						console.log("Creating new client");
-						$.ajax({
-							type: "POST",
-							url: "php/create_client.php",
-							data: {
-								new_client_name: $("#new_client_name").val(),
-								new_client_type: $("#new_client_type").val(),
-								new_client_phone: $("#new_client_phone").val(),
-								new_client_email: $("#new_client_email").val(),
-								new_client_comments: $("#new_client_comments").html()
-							}
-						})
-						.done(function (sql) {
-							console.log(sql);
-							window.location.replace("admin.php");
-						});
-					});
+					<div class="tab-content">
+						<div class="tab-pane active" id="client_details_pane">
+							
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h3 class="panel-title">
+										Create New Client
+									</h3>
+								</div>
 
-					$("#btn_create_trainer").on("click", function() {
-						console.log("Creating new trainer");
-						$.ajax({
-							type: "POST",
-							url: "php/create_trainer.php",
-							data: {
-								new_trainer_name: $("#new_trainer_name").val(),
-								new_trainer_phone: $("#new_trainer_phone").val(),
-								new_trainer_email: $("#new_trainer_email").val(),
-								new_trainer_quals: $("#new_trainer_quals").val(),
-							}
-						})
-						.done(function (sql) {
-							console.log(sql);
-							window.location.replace("admin.php");
-						});
-					});
-				</script>
+								<div class="panel-body" id="client_add_panel">
+									<div class="form-group">
+										<label for="new_client_name">Name</label>
+										<input type="text" class="form-control" id="new_client_name">
+									</div>
+									<div class="form-group">
+										<label for="new_client_type">Type</label>
+										<select class="form-control" id="new_client_type">
+											<option>strength</option>
+											<option>athlete</option>
+											<option>gen_pop</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label for="new_client_phone">Phone Number</label>
+										<input type="text" class="form-control" id="new_client_phone">
+									</div>
+									<div class="form-group">
+										<label for="new_client_email">Email Address</label>
+										<input type="text" class="form-control" id="new_client_email">
+									</div>
+									<div class="form-group">
+										<label for="new_client_comments">Comments</label>
+										<textarea class="form-control" rows="2" id="new_client_comments"></textarea>
+									</div>
+									
+								</div>
+								<div class="panel-footer">
+									<button type="button" class="btn btn-default" id="btn_create_client">Create Client</button>
+								</div>
+							</div>
 
-				<!-- Create remove client panel -->
-				<div class="col-sm-6 col-sm-offset-3 panel panel-default">
-					<div class="panel-heading">
-						<h3 class="panel-title">
-							Delete User
-						</h3>
-					</div>
+						</div>
+						<div class="tab-pane" id="trainer_details_pane">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h3 class="panel-title">
+										Create New Trainer
+									</h3>
+								</div>
 
-					<div class="panel-body" id="user_list">
-					</div>
-					<div class="panel-footer">
-						<button type="button" class="btn btn-default" id="btn_del_user">Delete User</button>
+								<div class="panel-body" id="trainer_add_panel">
+									<div class="form-group">
+										<label for="new_trainer_name">Name</label>
+										<input type="text" class="form-control" id="new_trainer_name">
+									</div>
+									<div class="form-group">
+										<label for="new_trainer_phone">Phone Number</label>
+										<input type="text" class="form-control" id="new_trainer_phone">
+									</div>
+									<div class="form-group">
+										<label for="new_trainer_email">Email Address</label>
+										<input type="text" class="form-control" id="new_trainer_email">
+									</div>
+									<div class="form-group">
+										<label for="new_trainer_quals">Qualifications</label>
+										<textarea class="form-control" rows="2" id="new_trainer_quals"></textarea>
+									</div>
+									
+								</div>
+								<div class="panel-footer">
+									<button type="button" class="btn btn-default" id="btn_create_trainer">Create Trainer</button>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
+			</div>
+				
+			<script type="text/javascript">
+
+				$("#btn_create_client").on("click", function() {
+					console.log("Creating new client");
+					$.ajax({
+						type: "POST",
+						url: "php/create_client.php",
+						data: {
+							new_client_name: $("#new_client_name").val(),
+							new_client_type: $("#new_client_type").val(),
+							new_client_phone: $("#new_client_phone").val(),
+							new_client_email: $("#new_client_email").val(),
+							new_client_comments: $("#new_client_comments").html()
+						}
+					})
+					.done(function (sql) {
+						console.log(sql);
+						window.location.replace("admin.php");
+					});
+				});
+
+				$("#btn_create_trainer").on("click", function() {
+					console.log("Creating new trainer");
+					$.ajax({
+						type: "POST",
+						url: "php/create_trainer.php",
+						data: {
+							new_trainer_name: $("#new_trainer_name").val(),
+							new_trainer_phone: $("#new_trainer_phone").val(),
+							new_trainer_email: $("#new_trainer_email").val(),
+							new_trainer_quals: $("#new_trainer_quals").val(),
+						}
+					})
+					.done(function (sql) {
+						console.log(sql);
+						window.location.replace("admin.php");
+					});
+				});
+			</script>
+
+			<div class="row">
+
+				<!-- Create delete user panel -->
+				<div class="col-sm-5 col-sm-offset-1">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								Delete User
+							</h3>
+						</div>
+
+						<div class="panel-body" id="user_list">
+						</div>
+						<div class="panel-footer">
+							<button type="button" class="btn btn-default" id="btn_del_user">Delete User</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-10 col-sm-offset-1" align="center">
 							
-				<script type="text/javascript">
+					<button type="button" class="btn btn-default" id="btn_edit_user">Edit Current User</button>
+					<button type="button" class="btn btn-default" onclick="window.location='edit_clients.php';">Edit Clients</button>
+				</div>
+					
+			</div>
+
+			<script type="text/javascript">
 					$.ajax({
 						type: "POST",
 						url: "php/get_user_list.php",
@@ -234,16 +254,11 @@
 						}
 						
 					});
-				</script>
-				<button type="button" class="btn btn-default" id="btn_edit_user">Edit Current User</button>
-							
-				<script type="text/javascript">
+
 					$("#btn_edit_user").on("click", function() {
 						window.location.replace("edit_user.php");
 					});
 				</script>
-				
-			</div>
 		</div>
 
 	</body>
