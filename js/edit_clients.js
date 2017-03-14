@@ -18,6 +18,8 @@ $(function() {
 	setHeading();
 	setBadge();
 
+    $("#admin_nav_li").addClass("active");
+
 	load_trainer_clients();
 
 	// Get all of the trainers clients
