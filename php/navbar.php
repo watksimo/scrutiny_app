@@ -27,6 +27,9 @@
 		<li id="progs_nav_li">
 			<a href = "programs.php">Programs</a>
 		</li>
+		<li id="ques_nav_li">
+			<a href = "questionnaires.php">Questionnaires</a>
+		</li>
 		<li id="mile_nav_li">
 			<a href = "milestones.php">Milestones</a>
 		</li>

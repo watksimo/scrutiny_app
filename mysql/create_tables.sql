@@ -35,6 +35,17 @@ CREATE TABLE Questions (
     CONSTRAINT PK_Questions PRIMARY KEY (id)
 );
 
+CREATE TABLE QuestionsAnswers (
+    questionid INT(6) UNSIGNED AUTO_INCREMENT,
+    answer VARCHAR(1000) NOT NULL,
+    value INT(2) NOT NULL,
+    FOREIGN KEY FK_QuestionsAnswers_Questions (questionid)
+    REFERENCES Questions(id)
+    ON UPDATE CASCADE
+    ON DELETE RESTRICT,
+    CONSTRAINT PK_QuestionsAnswers PRIMARY KEY (questionid,value)
+);
+
 CREATE TABLE QuestionnairesQuestions (
     questionnaireid INT(6) UNSIGNED NOT NULL,
     questionid INT(6) UNSIGNED NOT NULL,
