@@ -43,7 +43,7 @@ function load_trainer_clients() {
 				}
 			})
 			.done(function () {
-				window.location.replace("home.php");
+                location.reload(true);
 			});
 		});
 

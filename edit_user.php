@@ -139,6 +139,12 @@
 	    </div>
 	  </div>
 	</div>
+
+        <?php
+            if( isset($_SESSION['trainer_id']) ) {
+                include 'php/sel_client_modal.php';
+            }
+        ?>
 	
     </body>
     

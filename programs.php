@@ -50,16 +50,17 @@
 			</nav> 
 
 			<div class="content row">
-				<?php
-					if(isset($_SESSION['sel_client'])) {
-						echo '
+<?php
+if(isset($_SESSION['sel_client'])) {
+echo '
 				<div class="col-sm-5 col-sm-offset-1">
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h3 class="panel-title">
-						';
-						echo 'Add Program to ' . $_SESSION['sel_client_name'];
-						echo '
+';
+echo '
+								Add Program to ' . $_SESSION['sel_client_name'];
+echo '
 							</h3>
 						</div>
 
@@ -85,8 +86,8 @@
 						</div>
 					</div>
 				</div>
-						';
-						echo '
+';
+echo '
 							
 				<script type="text/javascript">
 					$.ajax({
@@ -126,17 +127,18 @@
 						});
 					});
 				</script>
-						';
+';
 
-						// Create remove milestone panel
-						echo '
+// Create remove milestone panel
+echo '
 				<div class="col-sm-5">
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h3 class="panel-title">
-						';
-						echo 'Remove Program from ' . $_SESSION['sel_client_name'];
-						echo '
+';
+echo '
+								Remove Program from ' . $_SESSION['sel_client_name'];
+echo '
 							</h3>
 						</div>
 
@@ -147,8 +149,8 @@
 						</div>
 					</div>
 				</div>
-						';
-						echo '
+';
+echo '
 				<script type="text/javascript">
 					$.ajax({
 						type: "POST",
@@ -184,28 +186,39 @@
 					});
 				</script>
 			</div>
-						';
-						echo '
+';
+echo '
 			<div class="row">
 				<div align="center">
 					<button type="button" class="btn btn-default" id="btn_create_prog">Create New Program</button>
 				</div>
 			</div>
-						';
-						echo '
+';
+echo '
 							
 			<script type="text/javascript">
 				$("#btn_create_prog").on("click", function() {
 					window.location.replace("create_program.php");
 				});
 			</script>
-						';
-					}
-				?>
+';
+} else {
+echo '
+			<div class="col-sm-10 col-sm-offset-1" align="center">
+				<h3>Select client using button in top right.</h3>
+			</div>
+';
+}
+?>
 					
 			
 		</div>
 
+		<?php
+			if( isset($_SESSION['trainer_id']) ) {
+				include 'php/sel_client_modal.php';
+			}
+		?>
 	</body>
 	
 	<footer>

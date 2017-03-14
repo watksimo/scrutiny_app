@@ -52,9 +52,11 @@ $("#btn_del_mile").on("click", function() {
 $(function() {
 	setHeading();
 	setBadge();
+    
+    $("#mile_nav_li").addClass("active");
 
 	if(isTrainer == 1) {
-	    // setTrainerBadge();
+	    load_trainer_clients();
 	}
 
 	loadMilestoneCalendar();

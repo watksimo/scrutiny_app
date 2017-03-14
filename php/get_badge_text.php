@@ -3,19 +3,7 @@
 
     if( isset($_SESSION['trainer_id']) ) {
         if(isset($_SESSION['sel_client'])) {
-            $sel = $_SESSION['sel_client'];
-
-            $check_query = "SELECT name FROM Clients WHERE id=$sel";
-            $conn=mysqli_connect('127.0.0.1','root','GoCanvas','scrutiny');
-
-            if ($result = $conn->query($check_query)) {
-
-                $row = $result->fetch_assoc();  # Guaranteed only 1 due to client_id as PK
-                echo "Client: " . $row['name'];
-                $_SESSION['sel_client_name'] = $row['name'];
-                # Close db connections
-                $conn->close();
-            }
+        echo "Client: " . $_SESSION['sel_client_name'];
             
         } else {
             echo 'Select Client';

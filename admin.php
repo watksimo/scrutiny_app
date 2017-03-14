@@ -261,12 +261,18 @@
 				</script>
 		</div>
 
+        <?php
+            if( isset($_SESSION['trainer_id']) ) {
+                include 'php/sel_client_modal.php';
+            }
+        ?>
+
 	</body>
 	
 	<footer>
 		<?php include 'php/footer.php'; ?>
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjBf13Qu1XH0l-KcykGEM8LshQFw1c4Bc"></script>
 		<script type="text/javascript" src="js/functions.js"></script>
-		<script type="text/javascript" src="js/programs.js"></script>
+		<script type="text/javascript" src="js/admin.js"></script>
 	</footer>
 </html>

@@ -36,7 +36,7 @@
 <?php
 if( isset($_SESSION['trainer_id']) ) {
 	echo '
-		<li>
+		<li id="admin_nav_li">
 			<a href = "admin.php">Admin</a>
 		</li>
 		';
