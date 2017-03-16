@@ -180,21 +180,6 @@ echo '
 				</script>
 			</div>
 ';
-echo '
-			<div class="row">
-				<div align="center">
-					<button type="button" class="btn btn-default" id="btn_create_ques">Create New Questionnaire</button>
-				</div>
-			</div>
-';
-echo '
-							
-			<script type="text/javascript">
-				$("#btn_create_ques").on("click", function() {
-					window.location.replace("create_questionnaire.php");
-				});
-			</script>
-';
 } else {
 echo '
 			<div class="col-sm-10 col-sm-offset-1" align="center">
@@ -203,6 +188,18 @@ echo '
 ';
 }
 ?>
+
+<div class="row">
+	<div align="center">
+		<button type="button" class="btn btn-default" id="btn_create_ques">Create New Questionnaire</button>
+	</div>
+</div>
+				
+<script type="text/javascript">
+	$("#btn_create_ques").on("click", function() {
+		window.location.replace("create_questionnaire.php");
+	});
+</script>
 					
 			
 		</div>

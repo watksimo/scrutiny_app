@@ -72,7 +72,7 @@ function setBadge() {
 }
 
 json_milestones = [];
-function loadMilestoneCalendar() {
+function loadMilestoneCalendar(displayElem) {
 
     $.ajax({
         type: "POST",
@@ -109,7 +109,7 @@ function loadMilestoneCalendar() {
 
 		console.log(m);
 	  
-		$('#main_display').fullCalendar({
+		displayElem.fullCalendar({
 			header: {
 				left: 'prev,next today',
 				center: 'title',

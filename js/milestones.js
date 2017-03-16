@@ -59,7 +59,7 @@ $(function() {
 	    load_trainer_clients();
 	}
 
-	loadMilestoneCalendar();
+	loadMilestoneCalendar($("#main_display"));
 
 });
 

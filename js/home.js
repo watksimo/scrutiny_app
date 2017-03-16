@@ -11,7 +11,7 @@ $(function() {
 		load_trainer_clients();
 
 	} else {
-		loadMilestoneCalendar();
+		loadMilestoneCalendar($("#main_display"));
 	}
 });
 

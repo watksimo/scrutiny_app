@@ -129,7 +129,7 @@ echo '
 				</script>
 ';
 
-// Create remove milestone panel
+// Create remove program panel
 echo '
 				<div class="col-sm-5">
 					<div class="panel panel-default">
@@ -187,21 +187,6 @@ echo '
 				</script>
 			</div>
 ';
-echo '
-			<div class="row">
-				<div align="center">
-					<button type="button" class="btn btn-default" id="btn_create_prog">Create New Program</button>
-				</div>
-			</div>
-';
-echo '
-							
-			<script type="text/javascript">
-				$("#btn_create_prog").on("click", function() {
-					window.location.replace("create_program.php");
-				});
-			</script>
-';
 } else {
 echo '
 			<div class="col-sm-10 col-sm-offset-1" align="center">
@@ -209,7 +194,22 @@ echo '
 			</div>
 ';
 }
+
 ?>
+
+
+<div class="row">
+	<div align="center">
+		<button type="button" class="btn btn-default" id="btn_create_prog">Create New Program</button>
+	</div>
+</div>
+				
+<script type="text/javascript">
+	$("#btn_create_prog").on("click", function() {
+		window.location.replace("create_program.php");
+	});
+</script>
+
 					
 			
 		</div>
