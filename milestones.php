@@ -50,6 +50,10 @@
 				<?php include 'php/navbar.php'; ?>
 			</nav> 
 
+<?php
+if(isset($_SESSION['sel_client'])) {
+echo '
+
 			<div class="content row">
 				<div class="col-sm-10 col-sm-offset-1">
 					<div class="panel panel-default">
@@ -62,9 +66,8 @@
 
 			<div class="row">
 
-<?php
-if(isset($_SESSION['sel_client'])) {
-echo '
+
+
 
 				<div class="col-sm-5 col-sm-offset-1">
 					<div class="panel panel-default">
@@ -119,6 +122,10 @@ echo '
 							console.log(sql);
 							window.location.replace("milestones.php");
 						});
+					});
+
+					$(function() {
+						loadMilestoneCalendar($("#main_display"));
 					});
 				</script>
 ';
@@ -181,6 +188,12 @@ echo '
 						});
 					});
 				</script>
+';
+} else {
+echo '
+			<div class="col-sm-10 col-sm-offset-1" align="center">
+		            <h3>Select client using button in top right.</h3>
+		    </div>
 ';
 }
 ?>

@@ -198,8 +198,14 @@
 
 			<div class="row">
 				<div class="col-sm-10 col-sm-offset-1" align="center">
-							
+<?php
+if(isset($_SESSION['sel_client'])) {
+echo '
 					<button type="button" class="btn btn-default" id="btn_edit_user">Edit Current User</button>
+';
+}
+?>
+					
 					<button type="button" class="btn btn-default" onclick="window.location='edit_clients.php';">Edit Clients</button>
 				</div>
 					
