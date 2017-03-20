@@ -51,153 +51,154 @@
 			</nav> 
 
 <?php
-if(isset($_SESSION['sel_client'])) {
-echo '
+if( isset($_SESSION['trainer_id']) ) {
+	if(isset($_SESSION['sel_client'])) {
+	echo '
 
-			<div class="content row">
-				<div class="col-sm-10 col-sm-offset-1">
-					<div class="panel panel-default">
-						<div class="panel-body" id="main_display">
+				<div class="content row">
+					<div class="col-sm-10 col-sm-offset-1">
+						<div class="panel panel-default">
+							<div class="panel-body" id="main_display">
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
 
 
-			<div class="row">
+				<div class="row">
 
 
 
 
-				<div class="col-sm-5 col-sm-offset-1">
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title">
-';
-echo '
-								Add Milestone for ' . $_SESSION['sel_client_name'];
-echo '
-							</h3>
-						</div>
+					<div class="col-sm-5 col-sm-offset-1">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title">
+	';
+	echo '
+									Add Milestone for ' . $_SESSION['sel_client_name'];
+	echo '
+								</h3>
+							</div>
 
-						<div class="panel-body" id="milestone_list">
-						</div>
-						<div class="panel-footer">
-							<button type="button" class="btn btn-default" id="btn_add_mile">Add Milestone</button>
-						</div>
-					</div>
-				</div>
-';
-echo '
-							
-				<script type="text/javascript">
-					$.ajax({
-						type: "POST",
-						url: "php/get_milestone_list.php",
-					})
-					.done(function (mile_list) {
-						json_mile_list = JSON.parse(mile_list);
-						// console.log(json_mile_list);
-
-						var select_box = $("<select id=\"add_mile_select\" />");
-
-						var i;
-						for (i = 0; i < json_mile_list.length; ++i) {
-							$("<option />", {value: json_mile_list[i]["id"], text: json_mile_list[i]["name"]}).appendTo(select_box);
-						}
-
-						select_box.appendTo("#milestone_list");
-					});
-
-					$("#btn_add_mile").on("click", function() {
-						console.log("Adding milestone to client");
-						$.ajax({
-							type: "POST",
-							url: "php/add_milestone.php",
-							data: {
-								add_mile_id: $("#add_mile_select").val()
-							}
-						})
-						.done(function (sql) {
-							console.log(sql);
-							window.location.replace("milestones.php");
-						});
-					});
-
-					$(function() {
-						loadMilestoneCalendar($("#main_display"));
-					});
-				</script>
-';
-
-// Create remove milestone panel
-echo '
-				<div class="col-sm-5">
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title">
-';
-echo '
-								Remove Milestone from ' . $_SESSION['sel_client_name'];
-echo '
-							</h3>
-						</div>
-
-						<div class="panel-body" id="rem_milestone_list">
-						</div>
-						<div class="panel-footer">
-							<button type="button" class="btn btn-default" id="btn_rem_mile">Remove Milestone</button>
+							<div class="panel-body" id="milestone_list">
+							</div>
+							<div class="panel-footer">
+								<button type="button" class="btn btn-default" id="btn_add_mile">Add Milestone</button>
+							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-';
-echo '
-							
-				<script type="text/javascript">
-					$.ajax({
-						type: "POST",
-						url: "php/get_curr_milestone_list.php",
-					})
-					.done(function (mile_list) {
-						json_mile_list = JSON.parse(mile_list);
-						// console.log(json_mile_list);
-
-						var select_box = $("<select id=\"rem_mile_select\" />");
-
-						var i;
-						for (i = 0; i < json_mile_list.length; ++i) {
-							$("<option />", {value: json_mile_list[i]["id"], text: json_mile_list[i]["name"]}).appendTo(select_box);
-						}
-
-						select_box.appendTo("#rem_milestone_list");
-					});
-
-					$("#btn_rem_mile").on("click", function() {
-						console.log("Removing milestone from client");
-						$.ajax({
-							type: "POST",
-							url: "php/rem_milestone.php",
-							data: {
-								rem_mile_id: $("#rem_mile_select").val()
-							}
-						})
-						.done(function (sql) {
-							console.log(sql);
-							window.location.replace("milestones.php");
-						});
-					});
-				</script>
-';
-} else {
-echo '
-			<div class="col-sm-10 col-sm-offset-1" align="center">
-		            <h3>Select client using button in top right.</h3>
-		    </div>
-';
-}
-?>
+	';
+	echo '
 								
+					<script type="text/javascript">
+						$.ajax({
+							type: "POST",
+							url: "php/get_milestone_list.php",
+						})
+						.done(function (mile_list) {
+							json_mile_list = JSON.parse(mile_list);
+							// console.log(json_mile_list);
+
+							var select_box = $("<select id=\"add_mile_select\" />");
+
+							var i;
+							for (i = 0; i < json_mile_list.length; ++i) {
+								$("<option />", {value: json_mile_list[i]["id"], text: json_mile_list[i]["name"]}).appendTo(select_box);
+							}
+
+							select_box.appendTo("#milestone_list");
+						});
+
+						$("#btn_add_mile").on("click", function() {
+							console.log("Adding milestone to client");
+							$.ajax({
+								type: "POST",
+								url: "php/add_milestone.php",
+								data: {
+									add_mile_id: $("#add_mile_select").val()
+								}
+							})
+							.done(function (sql) {
+								console.log(sql);
+								window.location.replace("milestones.php");
+							});
+						});
+
+						$(function() {
+							loadMilestoneCalendar($("#main_display"));
+						});
+					</script>
+	';
+
+	// Create remove milestone panel
+	echo '
+					<div class="col-sm-5">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title">
+	';
+	echo '
+									Remove Milestone from ' . $_SESSION['sel_client_name'];
+	echo '
+								</h3>
+							</div>
+
+							<div class="panel-body" id="rem_milestone_list">
+							</div>
+							<div class="panel-footer">
+								<button type="button" class="btn btn-default" id="btn_rem_mile">Remove Milestone</button>
+							</div>
+						</div>
+					</div>
+				</div>
+	';
+	echo '
+								
+					<script type="text/javascript">
+						$.ajax({
+							type: "POST",
+							url: "php/get_curr_milestone_list.php",
+						})
+						.done(function (mile_list) {
+							json_mile_list = JSON.parse(mile_list);
+							// console.log(json_mile_list);
+
+							var select_box = $("<select id=\"rem_mile_select\" />");
+
+							var i;
+							for (i = 0; i < json_mile_list.length; ++i) {
+								$("<option />", {value: json_mile_list[i]["id"], text: json_mile_list[i]["name"]}).appendTo(select_box);
+							}
+
+							select_box.appendTo("#rem_milestone_list");
+						});
+
+						$("#btn_rem_mile").on("click", function() {
+							console.log("Removing milestone from client");
+							$.ajax({
+								type: "POST",
+								url: "php/rem_milestone.php",
+								data: {
+									rem_mile_id: $("#rem_mile_select").val()
+								}
+							})
+							.done(function (sql) {
+								console.log(sql);
+								window.location.replace("milestones.php");
+							});
+						});
+					</script>
+	';
+
+	} else {
+	echo '
+				<div class="col-sm-10 col-sm-offset-1" align="center">
+			            <h3>Select client using button in top right.</h3>
+			    </div>
+	';
+	}
+	echo '
 			<div class="row">
 				<div class="col-sm-5 col-sm-offset-1">
 					<div class="panel panel-default">
@@ -249,6 +250,18 @@ echo '
 				</div>
 
 			</div>
+	';
+} else {
+echo '
+			<div class="content row">
+				<div class="col-sm-10 col-sm-offset-1" align="center">
+					<h3>Will add list of assigned milestones with details here.</h3>
+				</div>
+			</div>
+';
+}
+?>
+								
 		</div>
 
         <?php

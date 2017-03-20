@@ -45,6 +45,9 @@ if( isset($_SESSION['trainer_id']) ) {
 		';
 }
 ?>
+		<li id='acc_nav_li'>
+			<a href = "edit_account.php">Edit Account</a>
+		</li>
 		<li id='btn_logout'>
 			<a href = "#">Logout</a>
 		</li>
