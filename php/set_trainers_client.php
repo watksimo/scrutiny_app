@@ -1,11 +1,12 @@
 <?php
 	session_start();
 
+    include 'db_connect.php';
+
 	$_SESSION['sel_client'] = $_POST['sel_client'];
 	$sel = $_SESSION['sel_client'];	
 
     $check_query = "SELECT name FROM Clients WHERE id=$sel";
-	$conn=mysqli_connect('127.0.0.1','root','GoCanvas','scrutiny');
 
 	if ($result = $conn->query($check_query)) {
 

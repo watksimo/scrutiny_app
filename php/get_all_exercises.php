@@ -1,8 +1,9 @@
 <?php
     session_start();
     
+    include 'db_connect.php';    
+
     $check_query = "select * from Exercises;";
-    $conn=mysqli_connect('127.0.0.1','root','GoCanvas','scrutiny');
 
     if ($result = $conn->query($check_query)) {
 

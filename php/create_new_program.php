@@ -2,6 +2,8 @@
 
     session_start();
 
+    include 'db_connect.php';
+
     $returnval = 0;
 
     $program_name = $_POST['program_name'];
@@ -10,8 +12,6 @@
 
     $program_exercises = $_POST['program_exercises'];
     $program_exercises_list = json_decode($program_exercises);
-
-    $conn=mysqli_connect('127.0.0.1','root','GoCanvas','scrutiny');
 
     $check_query = "INSERT INTO Programs (id,name,type,comments) VALUES(0,'$program_name','$program_type','$program_comments')";
     $conn->query($check_query);

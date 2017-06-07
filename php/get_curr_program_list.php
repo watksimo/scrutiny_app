@@ -1,6 +1,8 @@
 <?php
     session_start();
 
+    include 'db_connect.php';
+
     if(isset($_SESSION['trainer_id'])) {
         $client_id = $_SESSION['sel_client'];
     } else {
@@ -8,7 +10,6 @@
     }
     
     $check_query = "select * from Programs where id in (select programid from ClientsPrograms where clientid=$client_id);";
-    $conn=mysqli_connect('127.0.0.1','root','GoCanvas','scrutiny');
 
     if ($result = $conn->query($check_query)) {
 

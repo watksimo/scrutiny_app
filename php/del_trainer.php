@@ -2,9 +2,9 @@
 
     session_start();
 
-    $del_trainer_id = $_POST['del_trainer_id'];
+    include 'db_connect.php';
 
-    $conn=mysqli_connect('127.0.0.1','root','GoCanvas','scrutiny');
+    $del_trainer_id = $_POST['del_trainer_id'];
 
     $check_query = "UPDATE Clients SET trainerid=0 WHERE trainerid=$del_trainer_id";
     $conn->query($check_query);

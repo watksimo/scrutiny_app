@@ -2,9 +2,9 @@
 
     session_start();
 
-    $del_client_id = $_POST['del_client_id'];
+    include 'db_connect.php';
 
-    $conn=mysqli_connect('127.0.0.1','root','GoCanvas','scrutiny');
+    $del_client_id = $_POST['del_client_id'];
 
     $check_query = "DELETE FROM ClientsMilestones WHERE clientid=$del_client_id";
     $conn->query($check_query);

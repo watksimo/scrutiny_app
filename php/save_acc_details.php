@@ -2,6 +2,8 @@
 
     session_start();
 
+    include 'db_connect.php';
+
     $acc_name = $_POST['acc_name'];
     $acc_phone = $_POST['acc_phone'];
     $acc_email = $_POST['acc_email'];
@@ -15,7 +17,6 @@
         $check_query = "UPDATE Clients SET name='$acc_name', phone='$acc_phone', email='$acc_email' WHERE id=$client_id;";
     }
 
-    $conn=mysqli_connect('127.0.0.1','root','GoCanvas','scrutiny');
 
     echo $check_query;
 
